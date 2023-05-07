@@ -5,13 +5,23 @@ import {
   StyledContactListItemLi,
   StyledContactsListUL,
 } from './Contacts.styled';
+import { useSelector } from 'react-redux';
+import { getContacts, getFilter } from 'redux/selectors';
 
-export const Contacts = ({ contacts, filter, onDeleteContact }) => {
-  // console.log(filter);
-  const filteredContacts = contacts.filter(({ name }) =>
-    name.toLowerCase().includes(filter.toLowerCase())
-  );
+const getFilteredContacts = (contacts, filter) => {
+  return contacts.filter(({ name }) => {
+    // console.log(filter);
+    return name.toLowerCase().includes(filter.toLowerCase());
+  });
+};
+
+export const Contacts = ({ onDeleteContact }) => {
+  const contacts = useSelector(getContacts);
+  const filter = useSelector(getFilter);
+  const filteredContacts = getFilteredContacts(contacts, filter);
+
   return (
+    // console.log(contacts),
     <StyledContactsListUL>
       {filteredContacts.map(({ id, name, number }) => (
         <StyledContactListItemLi key={id}>
@@ -28,13 +38,5 @@ export const Contacts = ({ contacts, filter, onDeleteContact }) => {
 };
 
 Contacts.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    }).isRequired
-  ).isRequired,
-  filter: PropTypes.string.isRequired,
   onDeleteContact: PropTypes.func.isRequired,
 };
