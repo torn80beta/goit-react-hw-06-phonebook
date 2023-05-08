@@ -9,8 +9,10 @@ import { useSelector } from 'react-redux';
 import { getContacts, getFilter } from 'redux/selectors';
 
 const getFilteredContacts = (contacts, filter) => {
+  // console.log(contacts);
+  // const normalizedContacts = Object.values(contacts).slice(0, -1);
   return contacts.filter(({ name }) => {
-    // console.log(filter);
+    // console.log(contacts);
     return name.toLowerCase().includes(filter.toLowerCase());
   });
 };
