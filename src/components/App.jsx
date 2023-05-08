@@ -5,7 +5,8 @@ import { Title } from './Title/Title';
 import { Contacts } from './Contacts/Contacts';
 import Filter from './Filter/Filter';
 import { useDispatch } from 'react-redux';
-import { addContact, deleteContact, changeFilter } from 'redux/actions';
+import { addContact, deleteContact } from 'redux/contactsSlice';
+import { changeFilter } from 'redux/filterSlice';
 import { getContacts, getFilter } from 'redux/selectors';
 import { useSelector } from 'react-redux';
 
