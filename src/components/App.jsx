@@ -14,7 +14,7 @@ const App = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
   const filter = useSelector(getFilter);
-
+  // console.log(contacts);
   // const isFirstRender = useRef(true);
 
   const checkContact = (arr, newName) => {
