@@ -10,7 +10,7 @@ import { getContacts, getFilter } from 'redux/selectors';
 
 const getFilteredContacts = (contacts, filter) => {
   return contacts.filter(({ name }) => {
-    // console.log(filter);
+    // console.log(contacts);
     return name.toLowerCase().includes(filter.toLowerCase());
   });
 };
